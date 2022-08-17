@@ -1,7 +1,17 @@
 const { Router } = require("express");
+const characterRouter = require('./characterRouter');
+const episodeRouter = require('./episodeRouter');
 
-const router = Router();
+const mainRouter = Router();
 
 // Configurar los routers
+mainRouter.get('/', (req, res) => {
+  res.send('Hola mundo!!')
+})
 
-module.exports = router;
+mainRouter.use('/character', characterRouter);
+mainRouter.use('/episode', episodeRouter);
+
+
+
+module.exports = mainRouter;
